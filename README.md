@@ -3,6 +3,8 @@
 
 In this activity, you will be completing a series of JavaScript exercises on your own and comparing your answers to those around you. This should help you develop a sense of different ways to go about solving JavaScript problems.
 
+**DO NOT USE AI FOR THIS EXERCISE!!!**
+
 ### Instructions
 
 1. Divide yourselves into groups of 3 - 5 students. You are submitting individually and thus do not need to create groups on Canvas.
