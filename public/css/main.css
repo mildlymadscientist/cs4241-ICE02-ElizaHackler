@@ -1,0 +1,44 @@
+body {
+  background-color: rgb(240, 157, 201);
+  color: rgb(140, 38, 69);
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+
+h1 {
+  color: rgb(92, 20, 34);
+  font-size: 40px;
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgb(180, 39, 123);
+}
+
+.flex-item {
+  background-color: rgb(24, 11, 19);
+  color: rgb(180, 39, 123);
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.custom-button {
+  background-color: rgb(92, 20, 34);
+  color: rgb(168, 39, 39);
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
