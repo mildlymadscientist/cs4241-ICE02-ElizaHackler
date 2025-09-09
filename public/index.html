@@ -63,7 +63,9 @@
       //add event for click
       btn.addEventListener("click", () => {
         const newButton = document.createElement("button");
-        newButton.textContent = Math.random().toString(30).substring(5);
+
+        //get random text and remove first 2 characters because of number and decimal
+        newButton.textContent = Math.random().toString(30).substring(2);
         document.body.appendChild(newButton);
       });
 
