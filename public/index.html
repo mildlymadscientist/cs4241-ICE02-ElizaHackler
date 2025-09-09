@@ -33,23 +33,22 @@
 
     <input type="text" id="textInput" placeholder="Tell me something?">
 
+    <script>
+
+      //add event for keyup
+      const textInput = document.getElementById("textInput");
+      textInput.addEventListener("keyup", (event) => {
+
+        //add text to end
+        const h1 = document.createElement("h1");
+        h1.textContent = textInput.value;
+        document.body.appendChild(h1);
+        textInput.value = "";
+      });
+
+    </script>
+
   </div>
-
-  <script>
-
-    //add event for keyup
-    const textInput = document.getElementById("textInput");
-    textInput.addEventListener("keyup", (event) => {
-
-      //add text to end
-      const h1 = document.createElement("h1");
-      h1.textContent = textInput.value;
-      document.body.appendChild(h1);
-      textInput.value = "";
-    });
-
-
-  </script>
 
   <div id="redundantButton">
 
