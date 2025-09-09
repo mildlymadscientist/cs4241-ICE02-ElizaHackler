@@ -35,7 +35,7 @@
 
     <script>
 
-      //add event for keyup
+      //add event for keyup so it immediately gets sent for each letter
       const textInput = document.getElementById("textInput");
       textInput.addEventListener("keyup", (event) => {
 
@@ -43,6 +43,8 @@
         const h1 = document.createElement("h1");
         h1.textContent = textInput.value;
         document.body.appendChild(h1);
+
+        //set to NULL
         textInput.value = "";
       });
 
