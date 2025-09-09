@@ -18,11 +18,59 @@
 <h1>In Class A2</h1>
 
 <body>
-  <button class="custom-button">Click Me!</button>
-  <div id="flexbox"></div>
+  <div class="flex-container" id="flexContainer"></div>
+
+  <script>
+
+    //call functions
+    Artist.speak();
+    Painter.paint();
+    loopBlocks();
+
+  </script>
+
+  <div id="inputAppend">
+
+    <input type="text" id="textInput" placeholder="Tell me something?">
+
+  </div>
+
+  <script>
+
+    //add event for keyup
+    const textInput = document.getElementById("textInput");
+    textInput.addEventListener("keyup", (event) => {
+
+      //add text to end
+      const h1 = document.createElement("h1");
+      h1.textContent = textInput.value;
+      document.body.appendChild(h1);
+      textInput.value = "";
+    });
 
 
-  <input type="text">
+  </script>
+
+  <div id="redundantButton">
+
+    <script>
+
+      //make button and add prompting text
+      const btn = document.createElement("button");
+      btn.textContent = "Try me!";
+      document.body.appendChild(btn);
+
+      //add event for click
+      btn.addEventListener("click", () => {
+        const newButton = document.createElement("button");
+        newButton.textContent = Math.random().toString(30).substring(5);
+        document.body.appendChild(newButton);
+      });
+
+    </script>
+
+  </div>
+
 </body>
 
 </html>

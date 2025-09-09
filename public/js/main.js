@@ -1,29 +1,55 @@
-// FRONT-END (CLIENT) JAVASCRIPT HERE
-
-const submit = async function (event) {
-  // stop form submission from trying to load
-  // a new .html page for displaying results...
-  // this was the original browser behavior and still
-  // remains to this day
-  event.preventDefault()
-
-  const input = document.querySelector("#yourname"),
-    json = { yourname: input.value },
-    body = JSON.stringify(json)
-
-  const response = await fetch("/submit", {
-    method: "POST",
-    body
-  })
-
-  const text = await response.text()
-
-  console.log("text:", text)
+//get random color
+getColor = function () {
+  //logic found on source 4
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  let color = `rgb(${r}, ${g}, ${b})`;
+  return color;
 }
 
-window.onload = function () {
-  const button = document.querySelector("button");
-  button.onclick = submit;
+//get random color of prepicked to remove greys, blacks, whites
+getSpecificColor = function () {
+  //get random number 1-10
+  let colorCode = Math.floor(Math.random() * 10);
+
+  //use switch to get color
+  switch (colorCode) {
+    case 0:
+      color = "red";
+      break;
+    case 1:
+      color = "blue";
+      break;
+    case 2:
+      color = "green";
+      break;
+    case 3:
+      color = "yellow";
+      break;
+    case 4:
+      color = "orange";
+      break;
+    case 5:
+      color = "purple";
+      break;
+    case 6:
+      color = "pink";
+      break;
+    case 7:
+      color = "lightblue";
+      break;
+    case 8:
+      color = "teal";
+      break;
+    case 9:
+      color = "lightgreen";
+      break;
+    default:
+      color = "magenta";
+  }
+
+  return color;
 }
 
 //Problem 1
@@ -36,38 +62,28 @@ window.onload = function () {
 // (painters are artists, after all) in some
 // way, and should also have a function named
 // paint() that sets the background color of the
-// page to a random color whenever called. 
+// page to a random color whenever called.
 
-// Sources
-// https://www.geeksforgeeks.org/javascript/javascript-inheritance/
-// https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch2.md
-// https://www.slingacademy.com/article/how-to-generate-random-color-in-javascript/#generating-random-rgb-color-codes
-
+//Artist object
 const Artist = {
+  //function
   speak: function () {
+    //print to console
     console.log("I am an artist");
   },
 }
 
+//Painter object
 const Painter = {
+  //function
   paint: function () {
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
+    //call function
+    Artist.speak();
 
-    let randomRgbColor = `rgb(${r}, ${g}, ${b})`;
-
-    //print random color to console
-    console.log(randomRgbColor);
-
-    //set background color to random color
-    document.body.style.backgroundColor = randomRgbColor;
+    //use helper
+    document.body.style.backgroundColor = getColor();
   },
 }
-
-//call functions
-Artist.speak();
-Painter.paint();
 
 //Problem 2
 // create a for loop that creates 20 blocks,
@@ -76,48 +92,23 @@ Painter.paint();
 // (i.e. no gray/black/white blocks)
 
 loopBlocks = function () {
+  //get FlexBox holder
+  const box = document.getElementById('flexContainer');
 
-  // const box = document.querySelector("button");
-
-  // //create 20 squares w/ random colors
-  // for (let i = 0; i < 20; i++) {
-  //   let r = Math.floor(Math.random() * 256);
-  //   let g = Math.floor(Math.random() * 256);
-  //   let b = Math.floor(Math.random() * 256);
-
-  //   let randomRgbColor = `rgb(${r}, ${g}, ${b})`;
-
-  //   document.body.style.backgroundColor = randomRgbColor;
-
-  // }
-
-  // Create a flex container
-  const flexContainer = document.createElement('div');
-  flexContainer.className = 'flex-container';
-
-  // Add flex items dynamically
+  //loop 20 times
   for (let i = 1; i <= 20; i++) {
-    //add random color to each box
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-    let randomRgbColor = `rgb(${r}, ${g}, ${b})`;
+
     //create box
     const flexItem = document.createElement('div');
     flexItem.className = 'flex-item';
-    flexItem.textContent = `Item ${i}`;
-    flexItem.style.backgroundColor = randomRgbColor;
-    flexContainer.appendChild(flexItem);
+
+    //use helper
+    flexItem.style.backgroundColor = getSpecificColor();
+
+    //add box
+    box.appendChild(flexItem);
   }
-
-  console.log(flexContainer);
-
-  // Append the flex container to the DOM
-  document.getElementById('flexbox').appendChild(flexContainer);
 }
-
-//call function
-loopBlocks();
 
 //Problem 3
 // create a for input field that does the following
@@ -125,10 +116,8 @@ loopBlocks();
 // 1. Creates a <h1> element containing the letter and appends it to the page
 // 2. deletes the inputted letter from the input field so it is blank
 
-const inputField = document.createElement("input");
-inputField.type = "text";
-inputField.id = "inputField";
-document.body.appendChild(inputField);
+//logic in script in index.HTML
+
 
 //Problem 4
 // make a button that, when clicked, creates a new
@@ -137,18 +126,4 @@ document.body.appendChild(inputField);
 // put random text inside of each button so you can be sure
 // that each button is different.
 
-// https://stackoverflow.com/questions/51006577/create-button-element-in-javascript
-// https://www.w3schools.com/JS/js_random.asp
-// https://javascript.ntxm.org/docs/advanced-dom-manipulation/creating--removing-elements-createelement-removechild-appendchild/
-
-//register HTML button
-const button = document.querySelector("custom_button");
-
-//when button is hit
-button.addEventListener("hit", function () {
-  //make random text button and delete old
-  const newButton = document.createElement("custom_button");
-  newButton.textContent = Math.random().toString(36).substring(7);
-  document.body.appendChild(newButton);
-  document.body.removeChild(button);
-});
+//logic in script in index.HTML
